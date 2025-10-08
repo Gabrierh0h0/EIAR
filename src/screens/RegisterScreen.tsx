@@ -14,12 +14,10 @@ import {
 import { Picker } from "@react-native-picker/picker";
 import { registerUser } from "../services/register";
 import { useFonts } from "expo-font";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import Feather from "react-native-vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/navigation";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const careers = [
   "Ingeniería de Sistemas y Computación",
@@ -51,7 +49,7 @@ type RegisterScreenNavigationProp = NativeStackNavigationProp<
 >;
 
 export default function App() {
-    const navigation = useNavigation<RegisterScreenNavigationProp>();
+  const navigation = useNavigation<RegisterScreenNavigationProp>();
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -111,19 +109,19 @@ export default function App() {
               placeholder="Primer nombre"
               value={firstName}
               onChangeText={setFirstName}
-              LeftIcon={<FontAwesome name="user" size={22} color={COLORS.ink} />}
+              LeftIcon={<Icon name="person-outline" size={22} color={COLORS.ink} />}
             />
             <IconInput
               placeholder="Segundo nombre"
               value={middleName}
               onChangeText={setMiddleName}
-              LeftIcon={<FontAwesome name="user" size={22} color={COLORS.ink} />}
+              LeftIcon={<Icon name="person-outline" size={22} color={COLORS.ink} />}
             />
             <IconInput
               placeholder="Apellidos"
               value={lastName}
               onChangeText={setLastName}
-              LeftIcon={<FontAwesome name="user" size={22} color={COLORS.ink} />}
+              LeftIcon={<Icon name="people-outline" size={22} color={COLORS.ink} />}
             />
             <IconInput
               placeholder="Correo institucional"
@@ -131,13 +129,13 @@ export default function App() {
               onChangeText={setEmail}
               keyboardType="email-address"
               autoCapitalize="none"
-              LeftIcon={<MaterialIcons name="email" size={22} color={COLORS.ink} />}
+              LeftIcon={<Icon name="mail-outline" size={22} color={COLORS.ink} />}
             />
 
             {/* Picker */}
             <View style={styles.inputWrap}>
               <View style={styles.leftIcon}>
-                <MaterialIcons name="school" size={22} color={COLORS.ink} />
+                <Icon name="school-outline" size={22} color={COLORS.ink} />
               </View>
               <View style={{ flex: 1, justifyContent: "center" }}>
                 <Picker
@@ -164,14 +162,14 @@ export default function App() {
               onChangeText={setPassword}
               secureTextEntry={!showPass}
               autoCapitalize="none"
-              LeftIcon={<FontAwesome name="lock" size={22} color={COLORS.ink} />}
+              LeftIcon={<Icon name="lock-closed-outline" size={22} color={COLORS.ink} />}
               RightIcon={
                 <Pressable onPress={() => setShowPass((v) => !v)} hitSlop={8}>
-                  {showPass ? (
-                    <Feather name="eye-off" size={22} color={COLORS.ink} />
-                  ) : (
-                    <Feather name="eye" size={22} color={COLORS.ink} />
-                  )}
+                  <Icon
+                    name={showPass ? "eye-off-outline" : "eye-outline"}
+                    size={22}
+                    color={COLORS.ink}
+                  />
                 </Pressable>
               }
             />
@@ -181,14 +179,14 @@ export default function App() {
               onChangeText={setConfirm}
               secureTextEntry={!showConfirm}
               autoCapitalize="none"
-              LeftIcon={<FontAwesome name="lock" size={22} color={COLORS.ink} />}
+              LeftIcon={<Icon name="lock-closed-outline" size={22} color={COLORS.ink} />}
               RightIcon={
                 <Pressable onPress={() => setShowConfirm((v) => !v)} hitSlop={8}>
-                  {showConfirm ? (
-                    <Feather name="eye-off" size={22} color={COLORS.ink} />
-                  ) : (
-                    <Feather name="eye" size={22} color={COLORS.ink} />
-                  )}
+                  <Icon
+                    name={showConfirm ? "eye-off-outline" : "eye-outline"}
+                    size={22}
+                    color={COLORS.ink}
+                  />
                 </Pressable>
               }
             />
