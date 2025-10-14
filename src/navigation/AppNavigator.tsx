@@ -1,48 +1,23 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../types/navigation";
+
+// Importa según tus exports
 import { LoginScreen } from "../screens/LoginScreen";
-import HomeScreen from "../screens/HomeScreen";
-import RegisterScreen from "../screens/RegisterScreen"; 
-import { RootStackParamList } from "../types/navigation";
+import Register from "../screens/RegisterScreen";
+import Inicio from "../screens/Inicio";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const AppNavigator = () => {
+export default function AppNavigator() {
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#023048", 
-        },
-        headerTintColor: "#ffffff", 
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-        headerBackVisible: true, 
-      }}
+      initialRouteName="Login"
+      screenOptions={{ headerShown: false, animation: "fade" }}
     >
-      {/* Login */}
-      <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{ headerShown: false }}
-      />
-
-      {/* Register */}
-      <Stack.Screen
-        name="Register"
-        component={RegisterScreen}
-        options={{ headerShown: false }}
-      />
-
-      {/* Home con header */}
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ title: "Home" }}
-      />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Inicio" component={Inicio} />
     </Stack.Navigator>
   );
-};
-
-export default AppNavigator;
+}
