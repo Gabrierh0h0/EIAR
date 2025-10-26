@@ -1,8 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LoginScreen } from "../screens/LoginScreen";
-import HomeScreen from "../screens/HomeScreen";
-import RegisterScreen from "../screens/RegisterScreen"; 
+import  HomeScreen  from "../screens/HomeScreen";
+import RegisterScreen from "../screens/RegisterScreen";
+import ScanQRScreen from "../screens/ScanQRScreen";
 import { RootStackParamList } from "../types/navigation";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -12,34 +13,41 @@ const AppNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#023048", 
+          backgroundColor: "#023048", // Color del header
         },
-        headerTintColor: "#ffffff", 
+        headerTintColor: "#ffffff", // Color de texto e íconos del header
         headerTitleStyle: {
           fontWeight: "bold",
         },
-        headerBackVisible: true, 
+        headerBackVisible: false,
       }}
     >
-      {/* Login */}
+      {/* Login sin header */}
       <Stack.Screen
         name="Login"
         component={LoginScreen}
         options={{ headerShown: false }}
       />
 
-      {/* Register */}
+      {/* Registro sin header */}
       <Stack.Screen
         name="Register"
         component={RegisterScreen}
         options={{ headerShown: false }}
       />
 
-      {/* Home con header */}
+      {/* Home con header estilizado */}
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ title: "Home" }}
+        options={{ headerShown: false }}
+      />
+
+      {/* Nueva pantalla: Escanear QR */}
+      <Stack.Screen
+        name="ScanQR"
+        component={ScanQRScreen}
+        options={{ headerShown: false,}}
       />
     </Stack.Navigator>
   );

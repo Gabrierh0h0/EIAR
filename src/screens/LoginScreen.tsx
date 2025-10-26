@@ -9,8 +9,7 @@ import {
   Image,
   Alert,
 } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Ionicons as Icon } from "@expo/vector-icons";import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../types/navigation";
 import { auth } from "../config/firebaseConfig";
@@ -35,7 +34,8 @@ export const LoginScreen: React.FC = () => {
 
     try {
       await signInWithEmailAndPassword(auth, usuario, password);
-      navigation.replace("Home"); // Si todo bien → Home
+     navigation.reset({ index: 0, routes: [{ name: 'Home' as never }] });
+
     } catch (error: any) {
       console.error(error);
       let mensaje = "Error al iniciar sesión";

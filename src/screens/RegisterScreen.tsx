@@ -80,7 +80,17 @@ export default function App() {
         confirm,
         program,
       });
-      Alert.alert("¡Cuenta creada!", "Ya quedaste registrado en EIAR.");
+
+      Alert.alert(
+        "¡Cuenta creada!",
+        "Ya quedaste registrado en EIAR.",
+        [
+          {
+            text: "Ir a iniciar sesión",
+            onPress: () => navigation.navigate("Login"),
+          },
+        ]
+      );
     } catch (e: any) {
       Alert.alert("Error", e.message ?? "No se pudo registrar, inténtalo de nuevo.");
     } finally {
